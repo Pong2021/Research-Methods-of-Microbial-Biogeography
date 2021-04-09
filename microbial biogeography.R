@@ -142,7 +142,7 @@ ggplot(site, aes(PCoA1, PCoA2)) +
 ### 8. Community assembly
 ## Calculation method of Beta_NTI 
 library(picante)
-commu <- read.csv("otu.csv",fileEncoding = "UCS-2LE",row.names = 1)
+commu <- read.csv("otu.csv",row.names = 1)
 phylo <- read.tree("OTUs.tre") # Phylogenetic tree of each OTU
 Beta_NTI<-function(phylo,comun,beta.reps=999){
    comun=t(comun) 
