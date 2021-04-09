@@ -21,7 +21,7 @@ top <- names(head(sort(rowSums(p), decreasing = T), 57))
 top_10<- c("Proteobacteria", "Actinobacteria", "Acidobacteria", "Chloroflexi", "Gemmatimonadetes","Bacteroidetes", "Planctomycetes","Firmicutes", "Thermomicrobia", "Nitrospirae")
 taxon$Phylum <- as.character(taxon$Phylum)
 taxon$Phylum[!(taxon$Phylum)%in%top_10] <- "Others"
-p_top <- aggregate(otu_abun, by=list(taxon$Phylum), sum) #获取top10
+p_top <- aggregate(otu_abun, by=list(taxon$Phylum), sum) 
 rownames(p_top) <- p_top[,1] 
 p_top <- p_top[,-1]
 p_top <- p_top[order(rowSums(p_top)),] 
@@ -52,8 +52,8 @@ ggplot(q, aes( x = sample, y = value, fill = Taxa))+
 
 ### 3. Latitude diversity pattern
 otu <- as.data.frame(t(otu))
-richness <- specnumber(otu) #计算丰富度
-shannon <- diversity(otu,index = "shannon") #计算shannon多样性
+richness <- specnumber(otu) 
+shannon <- diversity(otu,index = "shannon") 
 diversity <- data.frame(richness,shannon) 
 aa <- cbind(geo, diversity)
 summary(lm(aa$richness ~ aa$lat))
